@@ -5,49 +5,53 @@ import "./App.css";
 // Can be separated to its own file!
 function reducer(state, action) {
   switch (action.type) {
-    case "increment":
-      return { count: state.count + action.payload };
-    case "decrement":
-      return { count: state.count - action.payload };
-    case "reset":
-      return { count: 0 };
+    case "add":
+      if (!action.payload.trim()) return state;
+      const newTodo = {
+          "userId": 1,
+          "id": Date.now(),
+          "title": action.payload,
+          "completed": false
+        };
+        return [newTodo, ...state];
+      
+    case "toggle":
+       
+
     default:
       return state;
   }
 }
 
 function App() {
-  const [state, dispatch] = useReducer(reducer, { count: 0 });
-  const [step, setStep] = useState(1);
-
-  function handleStepSize(e) {
-    setStep(Number(e.target.value));
-  }
+  const [todos, dispatch] = useReducer(reducer, []);
+  const [inputText, setInputText] = useState("");
 
   return (
     <>
-      <fieldset>
-        <legend>StepSize</legend>
+      <div>
+        <h2>Create Todo List</h2>
         <input
-          style={{ fontSize: "2em", fieldSizing: "content" }}
-          onChange={handleStepSize}
-          type="number"
-          name="step"
-          value={step}
+          value={inputText}
+          type="text"
+          onChange={(e) => setInputText(e.target.value)}
         />
-      </fieldset>
 
-      <DispatchButton dispatch={dispatch} payload={step} type={"increment"}>
-        <h2>+</h2>
-      </DispatchButton>
-      <h1>{state.count}</h1>
-      <DispatchButton dispatch={dispatch} payload={step} type={"decrement"}>
-        <h2>-</h2>
-      </DispatchButton>
-      <br />
-      <DispatchButton dispatch={dispatch} type={"reset"}>
-        <h2>Reset</h2>
-      </DispatchButton>
+        <ul>
+          {todos.map(todo => (
+            <li key={todo.id}>
+              {todo.id} - {todo.title}
+            </li>
+          ))}
+        </ul>
+
+
+        <DispatchButton dispatch={dispatch} payload={inputText} type={"add"}>
+          <h2>Add</h2>
+        </DispatchButton>
+
+      </div>
+
     </>
   );
 }
