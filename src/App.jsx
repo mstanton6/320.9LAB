@@ -4,7 +4,7 @@ import "./App.css";
 
 function reducer(state, action) {
   switch (action.type) {
-    case "add":
+    case "add":  // Add a new Todo item
       if (!action.payload.trim()) return state;
       const newTodo = {
         "userId": 1,
@@ -14,14 +14,19 @@ function reducer(state, action) {
       };
       return [newTodo, ...state];
 
-    case "edit":
+    case "edit": // Edit the title
       return state.map(todo =>
         todo.id === action.payload.id
           ? { ...todo, title: action.payload.newTitle }
           : todo
       )
 
-    case "toggle":
+    case "toggle": // Toggle the checkbox
+      return state.map(todo =>
+        todo.id === action.payload.id  
+          ? { ...todo, completed: action.payload.completed }
+          : todo
+      )
 
     default:
       return state;
@@ -45,13 +50,19 @@ function App() {
         />
         <DispatchButton dispatch={dispatch} payload={inputText} type={"add"}>
           Add
-        </DispatchButton>
-
+        </DispatchButton>        
         <ul>
           {todos.map(todo => (
             <li key={todo.id}>
               {todo.id} - {todo.title}
 
+            <input // input for the checkbox to toggle              
+               type = "checkbox"
+              checked={todo.completed}
+              onChange={(e) => dispatch({ type: "toggle", payload: { id: todo.id, completed: e.target.checked } })}
+            />
+
+               {/* Edit button */}
               <button
                 onClick={() => {
                   const newTitle = prompt("Edit todo:", todo.title);
