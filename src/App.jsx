@@ -28,6 +28,9 @@ function reducer(state, action) {
           : todo
       )
 
+      case "delete": // Delete the Todo - filter out the id just selected and return the rest
+      return state.filter(todo => todo.id !== action.payload.id) 
+
     default:
       return state;
   }
@@ -36,7 +39,6 @@ function reducer(state, action) {
 function App() {
   const [todos, dispatch] = useReducer(reducer, []);
   const [inputText, setInputText] = useState("");
-  const [editText, seteditText] = useState("");
 
   return (
     <>
@@ -72,6 +74,19 @@ function App() {
                 }}
               >
                 Edit
+              </button>
+
+              {/* Delete button */}
+              <button
+                disabled={!todo.completed}
+                onClick={() => {
+                  const newTitle = prompt("Delete todo:", todo.title);
+                  if (newTitle !== null && newTitle.trim() !== "") {
+                    dispatch({ type: "delete", payload: { id: todo.id } });
+                  }
+                }}
+              >
+                Delete
               </button>
 
             </li>
