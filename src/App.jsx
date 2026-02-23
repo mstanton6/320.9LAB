@@ -80,8 +80,8 @@ function App() {
               <button
                 disabled={!todo.completed}
                 onClick={() => {
-                  const newTitle = prompt("Delete todo:", todo.title);
-                  if (newTitle !== null && newTitle.trim() !== "") {
+                  const delTitle = prompt("Delete todo:", todo.title);
+                  if (delTitle !== null && delTitle.trim() !== "") {
                     dispatch({ type: "delete", payload: { id: todo.id } });
                   }
                 }}
