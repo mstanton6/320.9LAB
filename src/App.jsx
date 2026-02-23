@@ -14,19 +14,25 @@ function reducer(state, action) {
       };
       return [newTodo, ...state];
 
-    case "edit": // Edit the title
-      return state.map(todo =>
-        todo.id === action.payload.id
-          ? { ...todo, title: action.payload.newTitle }
-          : todo
-      )
+    case "edit": { // Edit the title
+      const {id, newTitle} = action.payload
 
-    case "toggle": // Toggle the checkbox
       return state.map(todo =>
-        todo.id === action.payload.id  
-          ? { ...todo, completed: action.payload.completed }
+        todo.id === id
+          ? { ...todo, title: newTitle }
           : todo
       )
+    }
+
+    case "toggle": { // Change the checkbox
+      const {id, completed} = action.payload
+
+      return state.map(todo =>
+        todo.id === id
+          ? { ...todo, completed: completed }
+          : todo
+      )
+    }
 
       case "delete": // Delete the Todo - filter out the id just selected and return the rest
       return state.filter(todo => todo.id !== action.payload.id) 
