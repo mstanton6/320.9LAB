@@ -1,16 +1,67 @@
-# React + Vite
+# My Application Name and description
+ This is a Todo list Application built with React. It supports add, edit, delete, and toggle for completed tasks.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+How to Start
+============
+You start the server by "npm run dev"
 
-Currently, two official plugins are available:
+See the prerequisites below.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## React Compiler
+# Example usage
+Add
+  Enter a Todo item in the input box and click the "Add" button. That Todo item will go to the top of the list.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Edit
+  Select a todo item from the list and click the "Edit" button. You will be prompted to edit the title of the Todo item.
 
-## Expanding the ESLint configuration
+Delete
+  Select a todo item from the list and click the "Delete" button. You will be prompted to delete the Todo item, and click ok.
+  
+  Note: You must check the completed checkbox to enable the "Delete" button.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Toggle (completed)
+    Check or uncheck the checkbox.
+
+# Technologies Used:
+
+React
+Vite
+JavaScript              
+CSS
+
+# link to my gitGitHub account: https://github.com/mstanton6/320.9LAB.git
+
+# Prerequisites
+
+   1. Node.js
+
+
+# Installation and Usage
+
+To use this project locally:
+
+1.  **Clone the repository:**
+
+    git clone https://github.com/mstanton6/320.9LAB.git
+    
+2.  **Navigate to the project directory:**
+
+    cd 320.9LAB
+    
+3.  ** Run dependencies 
+
+    npm install
+
+4. Run npm run dev
+
+5.  Open a browser and go to http://localhost:5173
+
+# Contributions
+- Thank you to the following for making contributions to my project       
+1. https://www.w3schools.com/
+
+2. https://www.google.com/
+
+
+
